@@ -212,7 +212,7 @@ if (echo -n $1 | grep -q -e "^aurora_") ; then
     export AURORA_BUILD
 
         TARGET_PRODUCT=$1 \
-        TARGET_RELEASE= \
+        TARGET_RELEASE=$2 \
         TARGET_BUILD_VARIANT= \
         TARGET_BUILD_TYPE= \
         TARGET_BUILD_APPS= \
@@ -825,7 +825,7 @@ function lunch()
         return 1
     fi
 
- if ! check_product $product
+    if ! check_product $product $release
     then
         # if we can't find the product, try to grab it from our github
         T=$(gettop)
@@ -842,7 +842,7 @@ function lunch()
         cd $T > /dev/null
         vendor/aurora/build/tools/roomservice.py $product
         cd - > /dev/null
-        check_product $product
+        check_product $product $release
     else
         T=$(gettop)
         cd $T > /dev/null
