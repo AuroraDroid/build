@@ -833,9 +833,9 @@ function lunch()
         cd $T
         $T/vendor/aurora/build/tools/aurora.py $product
         cd $C
-        check_product $product
+        check_product $product $release
     fi
-    if ! check_product $product
+    if ! check_product $product $release
     then
         # if we can't find a product, try to grab it off the AuroraDroid-Devices GitHub
         T=$(gettop)
