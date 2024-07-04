@@ -214,6 +214,36 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   progress_dict = {partition: 0.1 for partition in block_diff_dict}
   progress_dict["system"] = system_progress
 
+  build = target_info.GetBuildProp("ro.build.date")
+  buildid = target_info.GetBuildProp("ro.aurora.version")
+  buildtype = target_info.GetBuildProp("ro.aurora.buildtype")
+  buildidn = target_info.GetBuildProp("ro.build.id")
+  buildday = target_info.GetBuildProp("ro.build.date")
+  securep = target_info.GetBuildProp("ro.build.version.security_patch")
+  device = target_info.GetBuildProp("ro.aurora.device")
+  androidver = target_info.GetBuildProp("ro.build.version.release")
+  manufacturer = target_info.GetBuildProp("ro.product.manufacturer")
+  sdkver = target_info.GetBuildProp("ro.build.version.sdk")
+  
+  script.Print(" **************** Information *****************")
+  script.Print(" AuroraDroid version: %s" % (buildid))
+  script.Print("")
+  script.Print(" Android ver: %s" % (androidver))
+  script.Print("")
+  script.Print(" Security patch: %s" % (securep))
+  script.Print("")
+  script.Print(" SDK ver: %s" % (sdkver))
+  script.Print("")
+  script.Print(" Build ID: %s" % (buildidn))
+  script.Print("")
+  script.Print(" Build date: %s" % (buildday))
+  script.Print("")
+  script.Print(" Build type: %s" % (buildtype))
+  script.Print("")
+  script.Print(" Device codename: %s" % (device))
+  script.Print("")
+  script.Print(" *******************************************")
+
   if target_info.get('use_dynamic_partitions') == "true":
     # Use empty source_info_dict to indicate that all partitions / groups must
     # be re-added.

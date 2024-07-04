@@ -57,5 +57,6 @@ if [ -n "$BUILD_THUMBPRINT" ] ; then
 fi
 
 echo "ro.aurora.device=$AURORA_DEVICE"
+echo "ro.aurora.buildtype=$AURORA_BUILD_TYPE"
 
 echo "# end build properties"
